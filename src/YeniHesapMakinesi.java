@@ -6,63 +6,28 @@ public class YeniHesapMakinesi {
 		System.out.println("Hoşgeldin :)");
 	}
 	
-	
-	
-	
-    static void toplamaIslemi1() {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Birinci sayı ...");
-		int birinciSayi = scan.nextInt();
-		System.out.print("İkinci sayı...");
-		int ikinciSayi=scan.nextInt();
-		System.out.print("sonuç=" + (birinciSayi + ikinciSayi));
+    static int toplamaIslemi(int x,int y) {
+		return x + y;
+    }   
+    
+    static int cikarmaIslemi(int x,int y){
+		return x-y;
+    }
+
+    static int cikarmaIslemi(int... args){
+		int sonuc = 0;
+    	for(int item : args) {
+			sonuc = sonuc + item;
+    	}
+    	return sonuc;
     }
     
-    static void cikarmaIslemi2(){
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Birinci sayı ...");
-		int birinciSayi = scan.nextInt();
-		System.out.print("İkinci sayı...");
-		int ikinciSayi=scan.nextInt();
-		System.out.print("sonuç=" + (birinciSayi - ikinciSayi));
+    static int carpmaIslemi(int x,int y){   //method-Parametre
+    	return x*y;							
     }
     
-    static void carpmaIslemi(){
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Birinci sayı ...");
-		int birinciSayi = scan.nextInt();
-		System.out.print("İkinci sayı...");
-		int ikinciSayi=scan.nextInt();
-		System.out.print("sonuç=" + (birinciSayi * ikinciSayi));
-    }
-    
-    static void bolmeIslemi(){
-		Scanner scan = new Scanner(System.in);
-		System.out.print("Birinci sayı ...");
-		int birinciSayi = scan.nextInt();
-		System.out.print("İkinci sayı...");
-		int ikinciSayi=scan.nextInt();
-//		System.out.print("sonuç=" + ((birinciSayi * 1.0)/ ikinciSayi));
-		
-		/*
-		if (ikinciSayi == 0  ) {
-			System.out.println("Bir Sayının Sıfıra Bölümü Tanımsızdır..");
-		}
-		else {				
-			double sonuc = (birinciSayi * 1.0)  / ikinciSayi ;
-			System.out.print("Bölme İşleminin sonucu = " + sonuc );
-		
-		}
-		 */
-		
-		try {
-			double sonuc = (birinciSayi * 1.0)  / ikinciSayi ;
-			System.out.print("Bölme İşleminin sonucu = " + sonuc );
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Bir Sayının Sıfıra Bölümü Tanımsızdır..");
-		}
+    static double bolmeIslemi(int x,int y){
+    	return ((double)x)/y;
 	}
 
 	public static void main(String[] args) {
@@ -79,41 +44,34 @@ public class YeniHesapMakinesi {
 		System.out.println(" 2. ÇIKARMA");
 		System.out.println(" 3. ÇARPMA");
 		System.out.println(" 4. BÖLME");
+		
 		System.out.print("Seciminizi giriniz :");
 		secim = tarayaci.nextInt();
-		
+		System.out.print("Birinci sayı ...");
+		birinciSayi = tarayaci.nextInt();
+		System.out.print("İkinci sayı...");
+		ikinciSayi=tarayaci.nextInt();
 		
 		switch(secim) {
 			case 1:
-				toplamaIslemi1();
+				System.out.println("Toplama işleminin sonucu = " + toplamaIslemi(birinciSayi,ikinciSayi));
 				break;
 			case 2:
-				cikarmaIslemi2();
+				System.out.println("Çıkarma işleminin sonucu = " + cikarmaIslemi(birinciSayi,ikinciSayi));
 				break;
 			case 3:
-				carpmaIslemi();
+				System.out.println("Çarpma işleminin sonucu = " +carpmaIslemi(birinciSayi,ikinciSayi));
 				break;
 			case 4:
-				bolmeIslemi();
+				if(ikinciSayi == 0) {
+					System.out.println("Bir sayının sıfıra bölümü tanımsızdır.");
+				}else {					
+					System.out.println("Bölme işleminin sonucu = " + bolmeIslemi(birinciSayi,ikinciSayi));
+				}
 				break;
 			default:
 				System.out.println("1 ile 4 arası bir rakam giriniz");
 		}
-			 
-		/*	
-		if(secim == 1) {
-			toplamaIslemi1();
-		}
-		else if(secim == 2) {
-			cikarmaIslemi2();
-		}
-		else if (secim == 3) {
-			carpmaIslemi();
-		}
-		else if  (secim  == 4)	{
-			bolmeIslemi();
-		}
-		*/
 	}
 }
 
